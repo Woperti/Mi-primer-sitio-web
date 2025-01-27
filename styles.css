@@ -1,0 +1,90 @@
+*,::after,::before {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+:root {
+    btn-menu-color: #31A548;
+    name-color: #1f3c3e;
+    header-color: #D24125;
+    bg-color: #235f32;
+    letter-color: #fac22e;
+}
+
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  h1, h2 {
+    margin: 0;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-areas: 
+      "header header header"
+      "left main right"
+      "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 200px 1fr 200px;
+    height: 100vh;
+  }
+  
+  /* Encabezado */
+  header {
+    grid-area: header;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #D24125;
+    align-items: center;
+    height: 40px;
+    font-size: 16px;
+    text-emphasis-color: #fac22e;
+  }
+  
+  h2 {
+    color: #fac22e;
+  }
+  /* Barra lateral izquierda */
+  .sidebar-left {
+    grid-area: left;
+    background-color: #f4f4f4;
+    padding: 10px;
+    overflow-y: auto;
+    border-right: 2px solid #ccc;
+    background-color: #fac22e;
+  }
+  
+  /* Contenido principal */
+  main {
+    grid-area: main;
+    padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+    background-color: #235f32;
+}
+  
+  footer {
+    grid-area: footer;
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  /* Estilos para los iframes */
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
