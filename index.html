@@ -18,24 +18,38 @@
     <div class="container">
         <!-- Encabezado -->
         <header>
-          <iframe src="Encabezado.html" title="Encabezado"></iframe>
+          <iframe src="encabezado.html" title="Encabezado"></iframe>
         </header>
-    
-        <!-- Barra lateral izquierda -->
         <aside class="sidebar-left">
-          <iframe src="Izquierdo.html" title="Archivo 1"></iframe>
-          <iframe src="Acciones.html" title="Archivo 2"></iframe>
-        </aside>
+          <ul>
+              <li><a href="#" data-src="cronograma.html">Cronograma</a></li>
+              <li><a href="#" data-src="actividades.html">Actividades</a></li>
+              <li><a href="#" data-src="intro.html">Iniciar</a></li>
+          </ul>
+      </aside>
         <!-- Contenido principal -->
         <main>
-          <iframe src="Actividades.html" title="Actividades"></iframe>
-          <iframe src="Cronograma.html" title="Archivo 2"></iframe>
-          <iframe src="Intro.html" title="Intro"></iframe>
+          <main class="content">
+            <iframe id="contenido" src="intro.html"></iframe>
         </main>
-        <!-- Pie de página -->
-        <footer>
-          <p>&copy; 2025 Proyecto sitio web</p>
-        </footer>
+        </main>
       </div>
+      <script>
+        document.querySelectorAll('.sidebar-left a').forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // Evita que el enlace recargue la página
+                const newSrc = this.getAttribute('data-src');
+                document.getElementById('contenido').src = newSrc;
+
+                // Cambiar la URL sin recargar la página
+                history.pushState(null, '', newSrc);
+            });
+        });
+
+        // Manejo del botón de retroceso en el navegador
+        window.addEventListener('popstate', function() {
+            document.getElementById('contenido').src = location.pathname.split('/').pop();
+        });
+    </script>
 </body>
 </html>
