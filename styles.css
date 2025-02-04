@@ -3,9 +3,20 @@
     padding: 0;
 }
 
-li {
+li, ul, ol {
     list-style: none;
+    text-decoration: none;
+    color: black;
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
 }
+
+li:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
 
 :root {
     btn-menu-color: #31A548;
@@ -38,6 +49,10 @@ body {
     height: 100vh;
   }
   
+  .intro-cont {
+    color: #fff;
+  
+  }
   /* Encabezado */
   header {
     grid-area: header;
