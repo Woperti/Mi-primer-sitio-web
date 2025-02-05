@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Construyendo Futuros</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    
     <div class="container">
         <!-- Encabezado -->
         <header>
@@ -19,42 +20,157 @@
         <!-- Menú lateral -->
         <aside class="sidebar-left">
             <ul>
-                <li><a href="#" data-src="intro.html">Iniciar</a></li>
-                <li><a href="#" data-src="presentacion.html">Presentación</a></li>
-                <li><a href="#" data-src="cronograma.html">Cronograma</a></li>
-                <li><a href="#" data-src="actividades.html">Actividades</a></li>
+                <li><a href="#" data-src="inicio">Iniciar</a></li>
+                <li><a href="#" data-src="presentacion">Presentación</a></li>
+                <li><a href="#" data-src="cronograma">Cronograma</a></li>
+                <li><a href="#" data-src="actividades">Actividades</a></li>
             </ul>
         </aside>
 
         <!-- Contenido principal -->
         <main class="content">
-            <iframe id="contenido" src="intro.html" title="Contenido"></iframe>
+            <div id="contenido">
+                <h2>Bienvenido al Sitio Web</h2>
+                <p>Este sitio web tiene como objetivo ofrecerte conocimientos prácticos y herramientas útiles para la
+                    formación en habilidades laborales y creatividad desde la escuela.</p>
+            </div>
         </main>
     </div>
+
     <script>
         document.querySelectorAll('.sidebar-left a').forEach(link => {
-            link.addEventListener('click', function(event) {
-                event.preventDefault(); // Evita la recarga
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Evita la recarga de la página
 
-                const newSrc = this.getAttribute('data-src');
-                const iframe = document.getElementById('contenido');
+                const newSrc = this.getAttribute('data-src'); // Obtener la URL del atributo
+                const contenido = document.getElementById('contenido');
 
-                iframe.src = newSrc;
-                history.pushState({ page: newSrc }, '', newSrc);
+                // Verifica que la URL del atributo `data-src` sea válida antes de cambiar el contenido
+                if (newSrc) {
+                    // Actualizar el contenido del main con texto específico según la opción seleccionada
+                    switch (newSrc) {
+                        case "inicio":
+                            contenido.innerHTML = `
+                        <div style="height: 100%; display: flex; flex-direction: column; color:white;">
+    <div class="intro-cont">
+    <h2 style="color: #fac22e;" class="intro-cont">Intro</h2>
+        <p class="intro-cont" >Este sitio web, te ensenara la creacion de un sitio web simple</p>
+        <p>Establecer metas para el aprendizaje junto a los conocimeintos adquiridos en varias materias y en esta misma Tics II. </p>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <img width="1000" height="437" src="https://blog.cib.education/hubfs/Nuevas%20img%20low%20quality/creatividad%20en%20la%20educacion-2.webp" alt="image" />
+    </div>
+    </div>
+                    `;
+                            break;
+                        case "presentacion":
+                            contenido.innerHTML = `
+                          <h2 style="color: #fac22e;">Presentacion</h2>
+    <ul>
+        <li style="color: #fac22e;">1. Este sitio web proveera al alumno con una guia para que peuda realizar un pequeno proyecto.</li>
+        <li style="color: #fac22e;">2. Seguir el ejemplo de prototipo: <a href="https://www.figma.com/proto/JFw1OkbNx7UnEix3uTLEIm/app-de-control-de-asistencia?node-id=1-5&starting-point-node-id=1%3A5&t=409bsm98rhduwrel-1" style="color: #fac22e;">Figma prototipo</a></li>
+        <li style="color: #fac22e;">3. Seguir el ejemplo de sitio web y como debes acceder a el: <a href="https://woperti.github.io/Mi-primer-sitio-web/" style="color: #fac22e;">Enlace al sitio</a></li>
+        <li style="color: #fac22e;">4. Implementa la transversalidad con las materias. Ejemplo: TICS, Fisica, Humanidades, Matematicas, Diseno web aprendido en clase e investigar un poco mas. <a href="" style="color: #fac22e;">Figma prototipo</a></li>
+    </ul>
+                    `;
+                            break;
+                        case "cronograma":
+                            contenido.innerHTML = `
+                        <h2 style="color: #fac22e;" title="">Cronograma</h2>
+    <div>
+        <img width="" style="z-index: 2" src="./img/diagrama.png" alt="cronograma"/>
+    </div>
+                    `;
+                            break;
+                        case "actividades":
+                            contenido.innerHTML = `
+                        <h2 style="color: #fac22e;">Actividades</h2>
+
+    <ul style="color: #fac22e;">
+        <li style="color: #fac22e;">1. Discutir sobre la actividad en clase</li>
+        <li style="color: #fac22e;">2. Formar equipo y debatir sobre un tema de interes</li>
+        <li style="color: #fac22e;">3. Dividir el trabajo y planificar usando Trello o una tabla en excel</li>
+        <li style="color: #fac22e;">4. Empezar el desarrollo del sitio web, creando un mockup(dibujo de como se vera la informacion que el equipo acordo)</li>
+        <li style="color: #fac22e;">5. Crear un primer sitio web de prueba, realizar un pequeno test de usabilidad. seguir el siguiente enlace <a  style="color: #fac22e;" href="https://github.com/Woperti/Usability-test" >Usability test</a></li>
+        <li style="color: #fac22e;">6. Seguir iterando hasta que el sitio web sea funcional y el usuario pueda entenderlo e interactuar para lograr el objetivo que se planteo, el cual resolvera un problema.</li>
+    </ul>
+                    `;
+                            break;
+                        default:
+                            contenido.innerHTML = `
+                        <h2>Bienvenido al Sitio Web</h2>
+                        <p>Este sitio web tiene como objetivo ofrecerte conocimientos prácticos y herramientas útiles para la formación en habilidades laborales y creatividad desde la escuela.</p>
+                    `;
+                    }
+
+                    // Cambiar la URL del navegador sin recargar la página
+                    history.pushState({ page: newSrc }, '', newSrc);
+                }
             });
         });
 
-        // Cambiar el título de la página cuando el iframe carga
-        document.getElementById('contenido').addEventListener('load', function () {
-            document.title = this.contentWindow.document.title || "Construyendo Futuros";
+        // Cambiar el título de la página cuando el contenido cambia
+        window.addEventListener('popstate', function (event) {
+            const contenido = document.getElementById('contenido');
+            const page = event.state ? event.state.page : "inicio"; // Página predeterminada
+
+            switch (page) {
+                case "inicio":
+                    contenido.innerHTML = `
+                        <div style="height: 100%; display: flex; flex-direction: column; color:white;">
+    <div class="intro-cont">
+    <h2 style="color: #fac22e;" class="intro-cont">Intro</h2>
+        <p class="intro-cont" >Este sitio web, te ensenara la creacion de un sitio web simple</p>
+        <p>Establecer metas para el aprendizaje junto a los conocimeintos adquiridos en varias materias y en esta misma Tics II. </p>
+    </div>
+    <div style="display: flex; justify-content: center;">
+        <img width="1000" height="437" src="https://blog.cib.education/hubfs/Nuevas%20img%20low%20quality/creatividad%20en%20la%20educacion-2.webp" alt="image" />
+    </div>
+    </div>
+                    `;
+                    break;
+                case "presentacion":
+                    contenido.innerHTML = `
+                          <h2 style="color: #fac22e;">Presentacion</h2>
+    <ul>
+        <li style="color: #fac22e;">1. Este sitio web proveera al alumno con una guia para que peuda realizar un pequeno proyecto.</li>
+        <li style="color: #fac22e;">2. Seguir el ejemplo de prototipo: <a href="https://www.figma.com/proto/JFw1OkbNx7UnEix3uTLEIm/app-de-control-de-asistencia?node-id=1-5&starting-point-node-id=1%3A5&t=409bsm98rhduwrel-1" style="color: #fac22e;">Figma prototipo</a></li>
+        <li style="color: #fac22e;">3. Seguir el ejemplo de sitio web y como debes acceder a el: <a href="https://woperti.github.io/Mi-primer-sitio-web/" style="color: #fac22e;">Enlace al sitio</a></li>
+        <li style="color: #fac22e;">4. Implementa la transversalidad con las materias. Ejemplo: TICS, Fisica, Humanidades, Matematicas, Diseno web aprendido en clase e investigar un poco mas. <a href="" style="color: #fac22e;">Figma prototipo</a></li>
+    </ul>
+                    `;
+                    break;
+                case "cronograma":
+                    contenido.innerHTML = `
+                        <h2 style="color: #fac22e;" title="">Cronograma</h2>
+    <div>
+        <img width="" style="z-index: 2" src="./img/diagrama.png" alt="cronograma"/>
+    </div>
+                    `;
+                    break;
+                case "actividades":
+                    contenido.innerHTML = `
+                        <h2 style="color: #fac22e;">Actividades</h2>
+
+    <ul style="color: #fac22e;">
+        <li style="color: #fac22e;">1. Discutir sobre la actividad en clase</li>
+        <li style="color: #fac22e;">2. Formar equipo y debatir sobre un tema de interes</li>
+        <li style="color: #fac22e;">3. Dividir el trabajo y planificar usando Trello o una tabla en excel</li>
+        <li style="color: #fac22e;">4. Empezar el desarrollo del sitio web, creando un mockup(dibujo de como se vera la informacion que el equipo acordo)</li>
+        <li style="color: #fac22e;">5. Crear un primer sitio web de prueba, realizar un pequeno test de usabilidad. seguir el siguiente enlace <a  style="color: #fac22e;" href="https://github.com/Woperti/Usability-test" >Usability test</a></li>
+        <li style="color: #fac22e;">6. Seguir iterando hasta que el sitio web sea funcional y el usuario pueda entenderlo e interactuar para lograr el objetivo que se planteo, el cual resolvera un problema.</li>
+    </ul>
+                    `;
+                    break;
+                default:
+                    contenido.innerHTML = `
+                        <h2>Bienvenido al Sitio Web</h2>
+                        <p>Este sitio web tiene como objetivo ofrecerte conocimientos prácticos y herramientas útiles para la formación en habilidades laborales y creatividad desde la escuela.</p>
+                    `;
+            }
         });
 
-        // Manejo del botón "atrás" del navegador
-        window.addEventListener('popstate', function(event) {
-            const iframe = document.getElementById('contenido');
-            const page = event.state ? event.state.page : "intro.html";
-            iframe.src = page;
-        });
     </script>
 </body>
+
 </html>
