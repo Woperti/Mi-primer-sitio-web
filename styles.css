@@ -17,15 +17,6 @@ li:hover {
   color: #000;
 }
 
-
-:root {
-    btn-menu-color: #31A548;
-    name-color: #1f3c3e;
-    header-color: #D24125;
-    bg-color: #235f32;
-    letter-color: #fac22e;
-}
-
 /* General */
 body {
     font-family: Arial, sans-serif;
